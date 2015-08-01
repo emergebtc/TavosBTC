@@ -44,8 +44,6 @@ void constructTx(const cryptonote::account_keys keys, const std::vector<cryptono
   std::vector<uint8_t> extraVec;
   extraVec.reserve(extra.size());
   std::for_each(extra.begin(), extra.end(), [&extraVec] (const char el) { extraVec.push_back(el);});
-  
-  Logging::LoggerGroup nullLog;
 
   bool r = cryptonote::construct_tx(keys, sources, splittedDests, extraVec, tx, unlockTimestamp);
   CryptoNote::throwIf(!r, cryptonote::error::INTERNAL_WALLET_ERROR);
